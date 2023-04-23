@@ -1,29 +1,29 @@
 const api = process.env.REACT_APP_API_KEY
 
 export async function checkAuth(recipe_user_id){
-    let data = await fetch(api + "user-id")
+    let data = await fetch(api + "user-id", {mode: 'cors'})
     data = await data.json()
     return data.userId === recipe_user_id
 }
 
 export async function checkFavorited(recipe_id){
-    let data = await fetch(api + "user/isfavorite/" + recipe_id)
+    let data = await fetch(api + "user/isfavorite/" + recipe_id, {mode: 'cors'})
     data = await data.json()
     return data.result
 }
 
 export async function addFavoriteRecipe(recipe_id){
-    await fetch(api + "user/favorite/" + recipe_id, {method: "POST"})
+    await fetch(api + "user/favorite/" + recipe_id, {method: "POST", mode: 'cors'})
     return
 }
 
 export async function removeFavoriteRecipe(recipe_id){
-    await fetch(api + "user/unfavorite/" + recipe_id, {method: "DELETE"})
+    await fetch(api + "user/unfavorite/" + recipe_id, {method: "DELETE", mode: 'cors'})
     return
 }
 
 export async function getUser(){
-    const res = await fetch(api + "user/userRead")
+    const res = await fetch(api + "user/userRead", {mode: 'cors'})
     return await res.json()
 }
 
@@ -31,6 +31,7 @@ export async function getUser(){
 export async function login(username, password){
     let response = await fetch(api + 'user/userLoginProc', {
         method: "POST", 
+        mode: 'cors',
         headers: {
           "Content-Type": "application/json",
           },
