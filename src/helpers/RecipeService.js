@@ -32,7 +32,7 @@ export async function getOneRecipe(id) {
 
 export async function addRecipe(data){
 	console.log(data)
-	return await fetch(api + "/recipes/create", {
+	return await fetch(api + "recipes/create", {
 		method: "POST", 
 		mode: 'cors',
 		headers: {
@@ -46,7 +46,7 @@ export async function uploadImage(form){
 	if(!form) {
 		return 
 	}
-	return await fetch(api + "/recipes/upload", {
+	return await fetch(api + "recipes/upload", {
 		method: "POST",
 		mode: 'cors',
 		body: form
@@ -55,7 +55,7 @@ export async function uploadImage(form){
 
 export async function editRecipe(data) {
 	console.log(data)
-	await fetch(api + "/recipes/"+data._id, {
+	await fetch(api + "recipes/"+data._id, {
 		method: "PATCH",
 		mode: 'cors',
 		headers: {
@@ -66,7 +66,7 @@ export async function editRecipe(data) {
 }
 
 export async function deleteRecipe(id) {
-	await fetch(api + "/recipes/"+id, {
+	await fetch(api + "recipes/"+id, {
 		method: "DELETE",
 		mode: 'cors'
 	}).catch((err) => {console.log(err)})
