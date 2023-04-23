@@ -1,6 +1,8 @@
+const api = process.env.REACT_APP_API_KEY
+
 export async function getRecipes(url) {
 	let recipes = []
-	await fetch("/recipes?"+url)
+	await fetch(api + "/recipes?" + url)
 	.then((res) => {
 	  recipes = res.json()
 	})
@@ -8,20 +10,20 @@ export async function getRecipes(url) {
 }
 
 export async function getCreatedRecipes() {
-	let created = await fetch("/recipes/created")
+	let created = await fetch(api + "/recipes/created")
 	created = await created.json()
 	return created
 }
 
 export async function getFavoritedRecipes() {
-	let favorites = await fetch("/recipes/favorited")
+	let favorites = await fetch(api + "/recipes/favorited")
 	favorites = await favorites.json()
 	return favorites
 }
 
 export async function getOneRecipe(id) {
 	let recipe = null
-	await fetch("/recipes/"+id)
+	await fetch("api + /recipes/"+id)
 	.then((res) => {
 	  recipe = res.json()
 	})
@@ -30,7 +32,7 @@ export async function getOneRecipe(id) {
 
 export async function addRecipe(data){
 	console.log(data)
-	return await fetch("/recipes/create", {
+	return await fetch(api + "/recipes/create", {
 		method: "POST", 
 		headers: {
 			"Content-Type": "application/json",
@@ -43,7 +45,7 @@ export async function uploadImage(form){
 	if(!form) {
 		return 
 	}
-	return await fetch("/recipes/upload", {
+	return await fetch(api + "/recipes/upload", {
 		method: "POST",
 		body: form
 	})
@@ -51,7 +53,7 @@ export async function uploadImage(form){
 
 export async function editRecipe(data) {
 	console.log(data)
-	await fetch("/recipes/"+data._id, {
+	await fetch(api + "/recipes/"+data._id, {
 		method: "PATCH",
 		headers: {
 			"Content-Type": "application/json",
@@ -61,7 +63,7 @@ export async function editRecipe(data) {
 }
 
 export async function deleteRecipe(id) {
-	await fetch("/recipes/"+id, {
+	await fetch(api + "/recipes/"+id, {
 		method: "DELETE"
 	}).catch((err) => {console.log(err)})
 }
