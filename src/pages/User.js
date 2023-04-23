@@ -8,6 +8,7 @@ import Footer from "components/footers/MiniCenteredFooter";
 import UserForm from "components/forms/UserForm";
 import UserRecipes from "components/forms/UserRecipes"
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 import styled from "styled-components";
 import {getCreatedRecipes, getFavoritedRecipes} from "../helpers/RecipeService"
 import {getUser} from "../helpers/UserService"
@@ -21,8 +22,9 @@ const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 pt-6 transform
 
 
 export default () => {
-  const [user, setUser] = useState([])
+  const navigate = useNavigate()
 
+  const [user, setUser] = useState([])
   const [createdRecipes, setCreated] = useState([])
   const [favoritedRecipes, setFavorited] = useState([])
 
@@ -31,7 +33,7 @@ export default () => {
       .then(response => response.json())
       .then(data => {
 	if(!data.active) {
-	  window.location.href = "/login";
+	  navigate('/login')
 	}
       });
 
