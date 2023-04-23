@@ -8,7 +8,6 @@ import illustration from "images/login-pantry.svg";
 import logo from "images/logo-p.svg";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
@@ -61,16 +60,14 @@ export default ({
       event.preventDefault();
       
       try {
-        const response = await axios.post('/user/userLoginProc', {
-          username: event.target.username.value,
-          password: event.target.password.value
-        });
-        console.log(response.data);
-        if (response.data.message == 'valid') {
-          navigate('/user')
-        } else{
-          setError('Invalid username or password. Please try again.');
-        }
+        login(event.target.username.value, event.target.password.value)
+        .then((response) => {
+          if (response.message == 'valid') {
+            navigate('/user')
+          } else{
+            setError('Invalid username or password. Please try again.');
+          }
+        })
       } catch (error) {
         console.error(error);
         setError('Invalid username or password. Please try again.');
