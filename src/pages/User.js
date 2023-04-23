@@ -32,21 +32,24 @@ export default () => {
     fetch('/user/testAuth')
       .then(response => response.json())
       .then(data => {
-	if(!data.active) {
-	  navigate('/login')
-	}
-      });
+      if(!data.active) {
+        navigate('/login')
+      }
+    });
 
     async function retrieveData() {
       await getUser().then((result) => {
+        console.log(result)
         setUser(result)
       })
 
       await getCreatedRecipes().then((result) => {
+        console.log(result)
         setCreated(result)
       })
 
       await getFavoritedRecipes().then((result) => {
+        console.log(result)
         setFavorited(result);
       })
     }
