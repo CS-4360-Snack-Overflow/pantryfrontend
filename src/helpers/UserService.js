@@ -29,7 +29,7 @@ export async function getUser(){
 
 
 export async function login(username, password){
-    let response = await fetch('user/userLoginProc', {
+    let response = await fetch(api + 'user/userLoginProc', {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",
