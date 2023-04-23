@@ -3,12 +3,14 @@ const api = process.env.REACT_APP_API_KEY
 export async function checkAuth(recipe_user_id){
     let data = await fetch(api + "user-id", {mode: 'cors'})
     data = await data.json()
+    console.log(data)
     return data.userId === recipe_user_id
 }
 
 export async function checkFavorited(recipe_id){
     let data = await fetch(api + "user/isfavorite/" + recipe_id, {mode: 'cors'})
     data = await data.json()
+    console.log(data)
     return data.result
 }
 
