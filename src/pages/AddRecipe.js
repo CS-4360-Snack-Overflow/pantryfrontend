@@ -15,7 +15,7 @@ const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -ske
  
 export default () => {
   useEffect(()=>{
-    testUserAuth()
+    const auth = testUserAuth()
   }, [])
 
   return (
