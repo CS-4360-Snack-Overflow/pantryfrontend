@@ -114,6 +114,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
     </div>
     <div style={{ display: isActive ? 'none' : 'inline-flex' }}>
     <NavLink href="/login" tw="lg:ml-12!">Login</NavLink>
+    </div>
+    <div style={{ display: isActive ? 'none' : 'inline-flex' }}>
     <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/signup">Sign Up</PrimaryLink>
     </div>
 
