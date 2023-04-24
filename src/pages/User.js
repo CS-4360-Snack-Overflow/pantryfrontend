@@ -29,8 +29,6 @@ export default () => {
   const [favoritedRecipes, setFavorited] = useState([])
 
   useEffect(()=>{
-    
-
     async function retrieveData() {
         
       testUserAuth()

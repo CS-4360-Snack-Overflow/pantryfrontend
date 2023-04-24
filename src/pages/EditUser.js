@@ -26,7 +26,7 @@ const [gender, setGender] = useState(user.gender);
 
 
   useEffect(()=>{
-    testUserAuth
+    testUserAuth()
   }, [])
 
   const handleSubmit = (event) => {

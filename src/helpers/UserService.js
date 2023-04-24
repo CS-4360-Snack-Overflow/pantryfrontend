@@ -34,8 +34,10 @@ export async function removeFavoriteRecipe(recipe_id){
 }
 
 export async function getUser(){
-    const res = await fetch(api + "user/userRead", {mode: 'cors'}).catch((err) => console.log(err))
-    return await res.json()
+    let res = await fetch(api + "user/userRead", {mode: 'cors'}).catch((err) => console.log(err))
+    res = await res.json()
+    console.log(res)
+    return res
 }
 
 
