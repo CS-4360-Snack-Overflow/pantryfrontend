@@ -1,56 +1,80 @@
 const api = process.env.REACT_APP_API_KEY
 
 export async function getRecipes(url) {
-	let recipes = []
-	await fetch(api + "recipes?" + url, {mode: 'cors'})
-	.then((res) => {
-	  recipes = res.json()
-	})
-	  return recipes
+	try {
+		let recipes = []
+		await fetch(api + "recipes?" + url, {mode: 'cors'})
+		.then((res) => {
+		  recipes = res.json()
+		})
+		  return recipes
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 export async function getCreatedRecipes() {
-	let created = await fetch(api + "recipes/created", {mode: 'cors'}).catch((err) => console.log(err))
-	created = await created.json()
-	return created
+	try {
+		let created = await fetch(api + "recipes/created", {mode: 'cors'}).catch((err) => console.log(err))
+		created = await created.json()
+		return created
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 export async function getFavoritedRecipes() {
-	let favorites = await fetch(api + "recipes/favorited", {mode: 'cors'}).catch((err) => console.log(err))
-	favorites = await favorites.json()
-	return favorites
+	try {
+		let favorites = await fetch(api + "recipes/favorited", {mode: 'cors'}).catch((err) => console.log(err))
+		favorites = await favorites.json()
+		return favorites
+	}
+	catch (err) {
+		console.log(err)
+	}
 }
 
 export async function getOneRecipe(id) {
-	let recipe = null
-	await fetch(api + "recipes/"+id, {mode: 'cors'})
-	.then((res) => {
-	  recipe = res.json()
-	})
-	  return recipe
+	try {
+		let recipe = null
+		await fetch(api + "recipes/"+id, {mode: 'cors'})
+		.then((res) => {
+		  recipe = res.json()
+		})
+		  return recipe
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 export async function addRecipe(data){
-	console.log(data)
-	return await fetch(api + "recipes/create", {
-		method: "POST", 
-		mode: 'cors',
-		headers: {
-			"Content-Type": "application/json",
-		  },
-		body: JSON.stringify(data)
-	})
+	try {
+		return await fetch(api + "recipes/create", {
+			method: "POST", 
+			mode: 'cors',
+			headers: {
+				"Content-Type": "application/json",
+				},
+			body: JSON.stringify(data)
+		})
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 export async function uploadImage(form){
-	if(!form) {
-		return 
+	try {
+		if(!form) {
+			return 
+		}
+		return await fetch(api + "recipes/upload", {
+			method: "POST",
+			mode: 'cors',
+			body: form
+		})
+	} catch (err) {
+		console.log(err)
 	}
-	return await fetch(api + "recipes/upload", {
-		method: "POST",
-		mode: 'cors',
-		body: form
-	})
 }
 
 export async function editRecipe(data) {
