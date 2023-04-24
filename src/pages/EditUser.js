@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 import { useLocation} from "react-router";
 import { testUserAuth } from "helpers/UserService";
 
+const api = process.env.REACT_APP_API_KEY
+
 const Heading = tw(SectionHeading)`mt-4 font-black text-right text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Container = styled.div` display: flex; flex-direction: column; align-items: center; justify-content: center;
   border: 2px solid orange; padding: 70px; border-radius: 100px; margin-top: 50px; max-width: 100%; 100% width: 100%; margin-bottom: 50px;`;
@@ -44,7 +46,7 @@ return (
     <Container>
 
         <Heading>Edit User</Heading>
-            <form action="/user/userUpdate" method="POST">
+            <form action={api + "/user/userUpdate"} method="POST">
         <Row>
 
           <Column>

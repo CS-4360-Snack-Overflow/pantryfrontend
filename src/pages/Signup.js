@@ -9,6 +9,8 @@ import logo from "images/logo-p.svg";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
 import { uploadImage } from "helpers/RecipeService";
 
+const api = process.env.REACT_APP_API_KEY
+
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
 const MainContainer = tw.div`lg:w-1/2 xl:w-5/12 p-6 sm:p-12`;
@@ -95,7 +97,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <Form action="/user/userCreate" method="POST">
+              <Form action={api + "user/userCreate"} method="POST">
                 <label class="mx-auto">Profile picture</label>
                 <ProfilePicture src={imUrl} alt="Profile Picture" />
                 <div class="flex-row">
