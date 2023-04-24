@@ -11,7 +11,7 @@ import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import styled from "styled-components";
 import {getCreatedRecipes, getFavoritedRecipes} from "../helpers/RecipeService"
-import {getUser} from "../helpers/UserService"
+import {getUser, testUserAuth} from "../helpers/UserService"
 
 const RecipeContainer = tw.div`border-2 border-solid border-orange-500 rounded-lg p-4 mx-2 w-full md:w-2/5`;
 const Heading = tw.h2`text-4xl sm:text-5xl font-black tracking-wide text-left pt-10 md:pt-24 w-full`;
@@ -29,15 +29,12 @@ export default () => {
   const [favoritedRecipes, setFavorited] = useState([])
 
   useEffect(()=>{
-    fetch('/user/testAuth')
-      .then(response => response.json())
-      .then(data => {
-      if(!data.active) {
-        navigate('/login')
-      }
-    });
+    
 
-    function retrieveData() {
+    async function retrieveData() {
+        
+      testUserAuth()
+    
       getUser().then((result) => {
         console.log(result)
         setUser(result)

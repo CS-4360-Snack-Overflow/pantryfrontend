@@ -7,6 +7,7 @@ import Header from "components/headers/light.js";
 import Footer from "components/footers/MiniCenteredFooter";
 import { useEffect } from 'react';
 import { useLocation} from "react-router";
+import { testUserAuth } from "helpers/UserService";
 
 const Heading = tw(SectionHeading)`mt-4 font-black text-right text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Container = styled.div` display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -25,13 +26,7 @@ const [gender, setGender] = useState(user.gender);
 
 
   useEffect(()=>{
-    fetch('/user/testAuth')
-      .then(response => response.json())
-      .then(data => {
-	if(!data.active) {
-	 window.location.href = "/login";
-	}
-      });
+    testUserAuth
   }, [])
 
   const handleSubmit = (event) => {

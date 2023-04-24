@@ -14,7 +14,7 @@ import { ReactComponent as DislikeIcon } from "images/dislike.svg";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { motion } from "framer-motion";
 import { deleteRecipe } from "helpers/RecipeService";
-import { addFavoriteRecipe, checkAuth, checkFavorited, removeFavoriteRecipe } from "helpers/UserService";
+import { addFavoriteRecipe, checkRecipeAuth, checkFavorited, removeFavoriteRecipe } from "helpers/UserService";
 import { Link } from "react-router-dom";
 
 
@@ -86,7 +86,7 @@ export default () => {
 
   // When the page loads, check if user owns recipe and if they have it favorited
   useEffect(() => {
-    checkAuth(recipe.user_num)
+    checkRecipeAuth(recipe.user_num)
     .then((res) =>{
       setAuthorized(res)
     })
