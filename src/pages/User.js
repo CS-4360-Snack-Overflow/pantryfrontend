@@ -37,18 +37,18 @@ export default () => {
       }
     });
 
-    async function retrieveData() {
-      await getUser().then((result) => {
+    function retrieveData() {
+      getUser().then((result) => {
         console.log(result)
         setUser(result)
       })
 
-      await getCreatedRecipes().then((result) => {
+      getCreatedRecipes().then((result) => {
         console.log(result)
         setCreated(result)
       })
 
-      await getFavoritedRecipes().then((result) => {
+      getFavoritedRecipes().then((result) => {
         console.log(result)
         setFavorited(result);
       })
