@@ -10,13 +10,13 @@ export async function getRecipes(url) {
 }
 
 export async function getCreatedRecipes() {
-	let created = await fetch(api + "recipes/created", {mode: 'cors'})
+	let created = await fetch(api + "recipes/created", {mode: 'cors'}).catch((err) => console.log(err))
 	created = await created.json()
 	return created
 }
 
 export async function getFavoritedRecipes() {
-	let favorites = await fetch(api + "recipes/favorited", {mode: 'cors'})
+	let favorites = await fetch(api + "recipes/favorited", {mode: 'cors'}).catch((err) => console.log(err))
 	favorites = await favorites.json()
 	return favorites
 }
