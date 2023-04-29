@@ -49,6 +49,11 @@ const RecipeDescription = styled.div`
 
 
 export default ({recipes = [], heading = "", authorized=false}) => {
+  const handleUnfavorite = () => {
+    removeFavoriteRecipe().then(
+      window.location.href='/user'
+    )
+  }
   return (
     <Container>
       <Heading>{heading}</Heading>
@@ -63,7 +68,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/addrecipe" state= {{recipe:recipe}}>
                   <Button type="Edit">Edit</Button>
                 </Link>
-                <Button onClick={async ()=>{await deleteRecipe(recipe._id); window.location.href='/user'}}>Delete Recipe</Button>
+                <Button onClick={handleUnfavorite()}>Delete Recipe</Button>
               </div>
 
             )}
