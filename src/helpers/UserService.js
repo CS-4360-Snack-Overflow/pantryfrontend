@@ -55,3 +55,8 @@ export async function login(username, password){
     response = await response.json()
     return response
 }
+
+export async function logout() {
+    await fetch(api + "user/logout", {mode: 'cors', credentials : "include"})
+    return
+}
