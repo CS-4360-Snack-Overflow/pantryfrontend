@@ -9,7 +9,6 @@ import logo from "images/logo-p.svg";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useCookies } from 'react-cookie';
 import { login } from "helpers/UserService";
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
@@ -57,7 +56,6 @@ export default ({
   margin-bottom: 10px;
 `;
     const [error, setError] = useState('');
-    const [cookies, setCookie] = useCookies(['connect-sid'])
     const navigate = useNavigate();
     async function handleLogin(event) {
       event.preventDefault();
@@ -66,7 +64,6 @@ export default ({
         login(event.target.username.value, event.target.password.value)
         .then((response) => {
           if (response.message == 'valid') {
-            setCookie("connect.sid", response.cookie, { path: '/' })
             navigate('/user')
           } else{
             setError('Invalid username or password. Please try again.');
