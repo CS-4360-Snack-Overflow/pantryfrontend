@@ -63,7 +63,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/addrecipe" state= {{recipe:recipe}}>
                   <Button type="Edit">Edit</Button>
                 </Link>
-                <Button onClick={()=>{deleteRecipe(recipe._id); window.location.href='/user'}}>Delete Recipe</Button>
+                <Button onClick={async ()=>{await deleteRecipe(recipe._id); window.location.href='/user'}}>Delete Recipe</Button>
               </div>
 
             )}
@@ -73,7 +73,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/recipedetails" state= {{clickedRecipe:recipe}}>
                   <Button type="View">View Recipe</Button>
                 </Link>
-                <Button onClick={() => {removeFavoriteRecipe(recipe._id); window.location.href='/user'}}>Unfavorite</Button>
+                <Button onClick={async () => {await removeFavoriteRecipe(recipe._id); window.location.href='/user'}}>Unfavorite</Button>
               </div>
             )}
           </RecipeListItem>
