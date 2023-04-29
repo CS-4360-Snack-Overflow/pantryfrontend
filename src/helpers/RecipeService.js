@@ -15,7 +15,7 @@ export async function getRecipes(url) {
 
 export async function getCreatedRecipes() {
 	try {
-		let created = await fetch(api + "recipes/created", {mode: 'cors'}).catch((err) => console.log(err))
+		let created = await fetch(api + "recipes/created", {mode: 'cors', credentials : "include"}).catch((err) => console.log(err))
 		created = await created.json()
 		return created
 	} catch (err) {
@@ -25,7 +25,7 @@ export async function getCreatedRecipes() {
 
 export async function getFavoritedRecipes() {
 	try {
-		let favorites = await fetch(api + "recipes/favorited", {mode: 'cors'}).catch((err) => console.log(err))
+		let favorites = await fetch(api + "recipes/favorited", {mode: 'cors', credentials : "include"}).catch((err) => console.log(err))
 		favorites = await favorites.json()
 		return favorites
 	}
@@ -55,8 +55,8 @@ export async function addRecipe(data){
 			headers: {
 				"Content-Type": "application/json",
 				},
-			body: JSON.stringify(data)
-		})
+			body: JSON.stringify(data), 
+			credentials : "include"})
 	} catch (err) {
 		console.log(err)
 	}
@@ -70,7 +70,8 @@ export async function uploadImage(form){
 		return await fetch(api + "recipes/upload", {
 			method: "POST",
 			mode: 'cors',
-			body: form
+			body: form, 
+			credentials : "include"
 		})
 	} catch (err) {
 		console.log(err)
@@ -85,6 +86,7 @@ export async function editRecipe(data) {
 		headers: {
 			"Content-Type": "application/json",
 		  },
+		credentials : "include",
 		body: JSON.stringify(data)
 	})
 }
@@ -92,6 +94,7 @@ export async function editRecipe(data) {
 export async function deleteRecipe(id) {
 	await fetch(api + "recipes/"+id, {
 		method: "DELETE",
-		mode: 'cors'
+		mode: 'cors',
+		credentials : "include"
 	}).catch((err) => {console.log(err)})
 }
