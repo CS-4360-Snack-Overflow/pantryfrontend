@@ -1,3 +1,4 @@
+import { useCookies } from 'react-cookie';
 const api = process.env.REACT_APP_API_KEY
 
 export async function checkRecipeAuth(recipe_user_id){
@@ -53,6 +54,8 @@ export async function login(username, password){
           },
         body: JSON.stringify({username: username, password: password})
       })
+    console.log(response)
     response = await response.json()
+    console.log(response)
     return response
 }
