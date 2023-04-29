@@ -82,7 +82,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   
   function getSessionActive(){
     testUserAuth()
-    .then((res) => {data.active ? setIsActive(true) : setIsActive(false)})    
+    .then((res) => setIsActive(res.active))    
   }
   function logoutAction() {
     fetch('/user/logout');
