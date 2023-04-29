@@ -82,6 +82,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   
   function getSessionActive(){
     let data = testUserAuth()
+    console.log(data)
     {data.active ? setIsActive(true) : setIsActive(false)}
   }
   function logoutAction() {
