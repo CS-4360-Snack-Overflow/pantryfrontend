@@ -86,7 +86,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   }
   function logoutAction() {
     fetch('/user/logout');
-    window.location.href = "/";
+    // window.location.href = "/";
   }
 
   useEffect(() => {
