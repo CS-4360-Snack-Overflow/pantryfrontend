@@ -54,8 +54,7 @@ export async function login(username, password){
           },
         body: JSON.stringify({username: username, password: password})
       })
-    console.log(response)
-    response = await response.json()
-    console.log(response)
+    console.log(response.body)
+
     return response
 }
