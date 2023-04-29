@@ -10,11 +10,10 @@ export async function checkRecipeAuth(recipe_user_id){
 export async function testUserAuth() {
     let auth = await fetch(api + 'user/testAuth', {credentials : "include"})
     auth = await auth.json()
-    console.log(auth)
+    if(!auth.active) {
+        window.location.href = "/login";
+    }
     return auth
-    // if(!auth.active) {
-    //     window.location.href = "/login";
-    // }
 }
 
 

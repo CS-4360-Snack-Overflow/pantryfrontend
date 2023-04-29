@@ -7,6 +7,7 @@ import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 import logo from "../../images/logo-p.svg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import { testUserAuth } from "helpers/UserService.js";
 //import { NavLink } from "react-router-dom";
 
 import { useState, useEffect } from 'react';
@@ -80,15 +81,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   const [isActive, setIsActive] = useState(false);
   
   function getSessionActive(){
-    fetch('/user/testAuth')
-      .then(response => response.json())
-      .then(data => {
-	{data.active ? setIsActive(true) : setIsActive(false)}
-	console.log(data.active);
-      })
-      .catch(error => {
-	console.error(error);
-      });
+    data = testUserAuth()
+    {data.active ? setIsActive(true) : setIsActive(false)}
   }
   function logoutAction() {
     fetch('/user/logout');
