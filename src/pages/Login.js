@@ -66,7 +66,7 @@ export default ({
         login(event.target.username.value, event.target.password.value)
         .then((response) => {
           if (response.message == 'valid') {
-            setCookie("connect-sid", response.cookie, { path: '/' })
+            setCookie("connect.sid", response.cookie, { path: '/' })
             navigate('/user')
           } else{
             setError('Invalid username or password. Please try again.');
