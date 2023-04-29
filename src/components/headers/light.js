@@ -81,9 +81,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   const [isActive, setIsActive] = useState(false);
   
   function getSessionActive(){
-    let data = testUserAuth()
-    console.log(data)
-    {data.active ? setIsActive(true) : setIsActive(false)}
+    testUserAuth()
+    .then((res) => {data.active ? setIsActive(true) : setIsActive(false)})    
   }
   function logoutAction() {
     fetch('/user/logout');
