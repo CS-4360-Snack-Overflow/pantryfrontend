@@ -73,7 +73,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/addrecipe" state= {{recipe:recipe}}>
                   <Button type="Edit">Edit</Button>
                 </Link>
-                <Button onClick={deleteRecipe}>Delete Recipe</Button>
+                <Button onClick={handleDelete()}>Delete Recipe</Button>
               </div>
 
             )}
@@ -83,7 +83,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/recipedetails" state= {{clickedRecipe:recipe}}>
                   <Button type="View">View Recipe</Button>
                 </Link>
-                <Button onClick={() => {handleUnfavorite}}>Unfavorite</Button>
+                <Button onClick={() => {handleUnfavorite()}}>Unfavorite</Button>
               </div>
             )}
           </RecipeListItem>
