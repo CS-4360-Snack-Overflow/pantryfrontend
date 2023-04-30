@@ -50,14 +50,13 @@ const RecipeDescription = styled.div`
 
 export default ({recipes = [], heading = "", authorized=false}) => {
   async function handleUnfavorite(){
-    removeFavoriteRecipe().then(
-      window.location.href='/user'
-    )
+    await removeFavoriteRecipe()
+    window.location.href='/user'
   }
   async function handleDelete(){
-    deleteRecipe().then(
-      window.location.href='/user'
-    )
+    await deleteRecipe()
+    window.location.href='/user'
+    
   }
   return (
     <Container>
