@@ -33,8 +33,7 @@ const [gender, setGender] = useState(user.gender);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // save user information to the server/database
-    // and redirect to the user page
+    window.location.href('/user')
   };
 
 //Sets up the body of the form to receive the user's information
