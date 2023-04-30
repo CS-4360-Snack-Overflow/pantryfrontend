@@ -78,7 +78,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/recipedetails" state= {{clickedRecipe:recipe}}>
                   <Button type="View">View Recipe</Button>
                 </Link>
-                <Button onClick={async () => {handleUnfavorite()}}>Unfavorite</Button>
+                <Button onClick={async () => {handleUnfavorite}}>Unfavorite</Button>
               </div>
             )}
           </RecipeListItem>
