@@ -46,7 +46,7 @@ return (
     <Container>
 
         <Heading>Edit User</Heading>
-            <form action={api + "/user/userUpdate"} method="POST">
+            <form action={api + "user/userUpdate"} method="POST">
         <Row>
 
           <Column>
