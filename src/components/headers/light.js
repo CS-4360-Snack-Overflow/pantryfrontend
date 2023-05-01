@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -77,9 +78,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   /*dj: the navlink /user, /login and /signup needs to be hidden depending on whether user session is active or not. fire the event when the page loads, execute route '/user/testAuth' to recieve json file, parse 'active' attribute of json file to get if TRUE or FALSE. Then according to that value, toggle navlink visibility On or Off for these three navlink components.
   Do the opposite for a new navlink that shows profile picture with text 'Signed in as <username>'. when session=true, this_navlink.visiblity is true.
   */
-
+  const navigate = useNavigate()
   const [isActive, setIsActive] = useState(false);
-  
   function getSessionActive(){
     testUserAuth()
     .then((res) => setIsActive(res.active))    
@@ -87,7 +87,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   function logoutAction() {
     logout()
     .then(() => {
-      window.location.href = "/"
+      navigate('/')
     }
     )
   }
