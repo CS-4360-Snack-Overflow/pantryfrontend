@@ -49,10 +49,15 @@ const RecipeDescription = styled.div`
 
 
 export default ({recipes = [], heading = "", authorized=false}) => {
-  const handleUnfavorite = () => {
-    removeFavoriteRecipe().then(
+  function handleUnfavorite(recipeId){
+    removeFavoriteRecipe(recipeId).then(() => {
       window.location.href='/user'
-    )
+    })
+  }
+  function handleDelete(recipeId){
+    deleteRecipe(recipeId).then(() => {
+      window.location.href='/user'
+    })
   }
   return (
     <Container>
@@ -68,7 +73,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/addrecipe" state= {{recipe:recipe}}>
                   <Button type="Edit">Edit</Button>
                 </Link>
-                <Button onClick={handleUnfavorite()}>Delete Recipe</Button>
+                <Button onClick={() => {handleDelete(recipe._id)}}>Delete Recipe</Button>
               </div>
 
             )}
@@ -78,7 +83,7 @@ export default ({recipes = [], heading = "", authorized=false}) => {
                 <Link to="/recipedetails" state= {{clickedRecipe:recipe}}>
                   <Button type="View">View Recipe</Button>
                 </Link>
-                <Button onClick={async () => {await removeFavoriteRecipe(recipe._id); window.location.href='/user'}}>Unfavorite</Button>
+                <Button onClick={() => {handleUnfavorite(recipe._id)}}>Unfavorite</Button>
               </div>
             )}
           </RecipeListItem>

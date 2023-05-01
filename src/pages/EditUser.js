@@ -6,7 +6,7 @@ import tw from "twin.macro";
 import Header from "components/headers/light.js";
 import Footer from "components/footers/MiniCenteredFooter";
 import { useEffect } from 'react';
-import { useLocation} from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { testUserAuth } from "helpers/UserService";
 
 const api = process.env.REACT_APP_API_KEY
@@ -25,16 +25,15 @@ padding: 10px 20px; border: none; border-radius: 50px; cursor: pointer; width: f
 const EditUser = () => {
 const user = useLocation().state.user;
 const [gender, setGender] = useState(user.gender);
-
+const navigate = useNavigate()
 
   useEffect(()=>{
     testUserAuth()
   }, [])
 
-  const handleSubmit = (event) => {
+  function handleSubmit(event){
     event.preventDefault();
-    // save user information to the server/database
-    // and redirect to the user page
+    navigate('/user')
   };
 
 //Sets up the body of the form to receive the user's information
@@ -46,7 +45,7 @@ return (
     <Container>
 
         <Heading>Edit User</Heading>
-            <form action={api + "/user/userUpdate"} method="POST">
+            <form action={api + "user/userUpdate"} method="POST" onSubmit={() => handleSubmit}>
         <Row>
 
           <Column>
