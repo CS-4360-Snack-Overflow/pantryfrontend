@@ -115,12 +115,9 @@ export default ({
     if(image) {
       form.append('files', image);
     let res = await uploadImage(form);
-    res = await res.json().then((result) =>{
-      setUrl(result.url)
-    })
-    }
-    
-  }
+    const data = await res.json()
+    setUrl(data.url)
+    }}
 
   const linkToRecipes = () => { 
     const path = '/recipes'
