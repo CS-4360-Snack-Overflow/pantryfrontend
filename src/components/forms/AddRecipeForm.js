@@ -113,10 +113,10 @@ export default ({
     e.preventDefault()
     let form = new FormData();
     if(image) {
-      form.append('files', image);
+      form.append('image', image);
     let res = await uploadImage(form);
     res = await res.json().then((result) =>{
-      setUrl(__dirname + result.path)
+      setUrl(result.url)
     })
     }
     
