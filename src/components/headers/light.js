@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
@@ -81,16 +81,16 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   const navigate = useNavigate()
   const [isActive, setIsActive] = useState(false);
   function getSessionActive(){
-    testUserAuth()
+    testUserAuth(redirect=false)
     .then((res) => setIsActive(res.active))    
   }
   function logoutAction() {
     console.log('logging out')
     logout()
-    // .then(() => {
-    //   navigate('/')
-    // }
-    // )
+    .then(() => {
+      navigate('/')
+    }
+    )
   }
 
   useEffect(() => {

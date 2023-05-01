@@ -7,10 +7,10 @@ export async function checkRecipeAuth(recipe_user_id){
     return data.userId === recipe_user_id
 }
 
-export async function testUserAuth() {
+export async function testUserAuth(redirect=true) {
     let auth = await fetch(api + 'user/testAuth', {credentials : "include"})
     auth = await auth.json()
-    if(!auth.active) {
+    if(!auth.active && redirect) {
         window.location.href = "/login";
     }
     return auth
