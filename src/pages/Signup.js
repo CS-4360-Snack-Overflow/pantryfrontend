@@ -81,7 +81,6 @@ export default ({
       form.append('files', image);
     let res = await uploadImage(form);
     const data = await res.json()
-    console.log(data)
     setUrl(data.url)
     }}
 
