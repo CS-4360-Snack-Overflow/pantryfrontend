@@ -107,7 +107,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
       <NavLink href="/user">Profile</NavLink>
     </div>
     <div style={{ display: isActive ? 'inline-flex' : 'none' }}>
-      <NavLink onClick={() => logoutAction}>Logout</NavLink>
+      <NavLink onClick={() => {logoutAction()}}>Logout</NavLink>
     </div>
     <div style={{ display: isActive ? 'none' : 'inline-flex' }}>
     <NavLink href="/login" tw="lg:ml-12!">Login</NavLink>
