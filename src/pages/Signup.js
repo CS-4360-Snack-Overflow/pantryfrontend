@@ -80,9 +80,11 @@ export default ({
     if(image) {
       form.append('files', image);
     let res = await uploadImage(form);
-    res = await res.json()
     console.log(res)
-    setUrl(res.url)
+    const data = await res.json()
+    console.log(data)
+    console.log(data.url)
+    setUrl(data.url)
     }}
 
   return (
