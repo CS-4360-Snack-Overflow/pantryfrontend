@@ -87,10 +87,10 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   function logoutAction() {
     console.log('logging out')
     logout()
-    .then(() => {
-      navigate('/')
-    }
-    )
+    // .then(() => {
+    //   navigate('/')
+    // }
+    // )
   }
 
   useEffect(() => {
