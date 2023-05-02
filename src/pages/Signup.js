@@ -8,7 +8,7 @@ import illustration from "images/login-pantry.svg";
 import logo from "images/logo-p.svg";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
 import { uploadImage } from "helpers/RecipeService";
-import { useNavigate } from "react-router-dom";
+
 const api = process.env.REACT_APP_API_KEY
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
@@ -65,7 +65,6 @@ export default ({
     "gender" : "Gender"
   }
 }) => {
-  const navigate = useNavigate()
   const [image, setImage] = useState(null)
   const [imUrl, setUrl] = useState("/placeholder.webp")
 
@@ -85,38 +84,6 @@ export default ({
     setUrl(data.url)
     }}
 
-  async function handleSubmit(e) {
-    e.preventDefault()
-    // const {
-    //   fullName, emailAddress, username, password, profilePicture, bio, phoneNumber, dateOfBirth, gender, countryRegion
-    // }
-    const form = new FormData();
-    e.target.map((field) => {
-      console.log(e.target[field].name)
-      console.log(e.target[field].value)
-    })
-    // form.append("profilePicture", e.target.profilePicture.value)
-    // form.append("fullName", e.target.fullName.value)
-    // form.append("emailAddress", e.target.emailAddress.value)
-    // form.append("username", e.target.username.value)
-    // form.append("password", e.target.password.value)
-    // form.append("profilePicture", e.target.profilePicture.value)
-    // form.append("profilePicture", e.target.profilePicture.value)
-    // form.append("profilePicture", e.target.profilePicture.value)
-
-    let response = await fetch(api + "user/userCreate", {
-      method: 'POST',
-      body: form
-    })
-    response = await response.json()
-    console.log(response)
-    if(response.message === "success") {
-      navigate("/")
-    } else {
-      // Handle signup error message
-      return
-    }
-  }
   return (
   <AnimationRevealPage>
     <Container>
@@ -128,7 +95,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <Form onSubmit={handleSubmit}>
+              <Form action={api + "user/userCreate"} method="POST">
                 <label class="mx-auto">Profile picture</label>
                 <ProfilePicture src={imUrl} alt="Profile Picture" />
                 <div class="flex-row">
