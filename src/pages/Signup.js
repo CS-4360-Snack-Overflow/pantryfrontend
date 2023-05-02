@@ -88,7 +88,7 @@ export default ({
   async function handleSubmit(e) {
     e.preventDefault()
     const form = new FormData(e.target);
-    
+    console.log("submitting user")
     let response = await fetch(api + "user/userCreate", {
       method: 'POST',
       body: form
@@ -113,7 +113,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <Form action={() => {handleSubmit()}}>
+              <Form action={handleSubmit}>
                 <label class="mx-auto">Profile picture</label>
                 <ProfilePicture src={imUrl} alt="Profile Picture" />
                 <div class="flex-row">
