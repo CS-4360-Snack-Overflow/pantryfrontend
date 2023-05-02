@@ -89,6 +89,7 @@ export default ({
     e.preventDefault()
     const form = new FormData(e.target);
     console.log("submitting user")
+    console.log(form)
     let response = await fetch(api + "user/userCreate", {
       method: 'POST',
       body: form
