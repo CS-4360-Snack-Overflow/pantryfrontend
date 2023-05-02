@@ -93,8 +93,8 @@ export default ({
       method: 'POST',
       body: form
     })
-
     response = await response.json()
+    console.log(response)
     if(response.message === "success") {
       navigate("/")
     } else {
