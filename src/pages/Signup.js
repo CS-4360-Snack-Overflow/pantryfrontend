@@ -89,7 +89,7 @@ export default ({
     e.preventDefault()
     const form = new FormData(e.target);
     
-    let response = await fetch('/apicall', {
+    let response = await fetch(api + "user/userCreate", {
       method: 'POST',
       body: form
     })
@@ -113,7 +113,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <Form action={api + "user/userCreate"} method="POST">
+              <Form action={handleSubmit} method="POST">
                 <label class="mx-auto">Profile picture</label>
                 <ProfilePicture src={imUrl} alt="Profile Picture" />
                 <div class="flex-row">
