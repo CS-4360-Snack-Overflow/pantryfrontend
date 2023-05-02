@@ -89,12 +89,17 @@ export default ({
     e.preventDefault()
     const form = new FormData(e.target);
     
-    const response = await fetch('/apicall', {
+    let response = await fetch('/apicall', {
       method: 'POST',
       body: form
-    });
+    })
 
-    navigate("/")
+    response = await response.json()
+    if(response.status === 200) {
+      navigate("/")
+    } else {
+      return
+    }
   }
   return (
   <AnimationRevealPage>
