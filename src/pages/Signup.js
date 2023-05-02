@@ -11,7 +11,6 @@ import { uploadImage } from "helpers/RecipeService";
 import { useNavigate } from "react-router-dom";
 const api = process.env.REACT_APP_API_KEY
 
-const navigate = useNavigate()
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
 const MainContainer = tw.div`lg:w-1/2 xl:w-5/12 p-6 sm:p-12`;
@@ -66,6 +65,7 @@ export default ({
     "gender" : "Gender"
   }
 }) => {
+  const navigate = useNavigate()
   const [image, setImage] = useState(null)
   const [imUrl, setUrl] = useState("/placeholder.webp")
 
