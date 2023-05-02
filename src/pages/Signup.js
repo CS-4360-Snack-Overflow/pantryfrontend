@@ -95,9 +95,10 @@ export default ({
     })
 
     response = await response.json()
-    if(response.status === 200) {
+    if(response.message === "success") {
       navigate("/")
     } else {
+      // Handle signup error message
       return
     }
   }
