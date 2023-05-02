@@ -87,11 +87,23 @@ export default ({
 
   async function handleSubmit(e) {
     e.preventDefault()
+    // const {
+    //   fullName, emailAddress, username, password, profilePicture, bio, phoneNumber, dateOfBirth, gender, countryRegion
+    // }
     const form = new FormData();
-    console.log("submitting user")
-    console.log(e.target.elements)
-    console.log(e.target.fullName)
-    console.log(e.target.fullName.value)
+    e.target.map((field) => {
+      console.log(e.target[field].name)
+      console.log(e.target[field].value)
+    })
+    // form.append("profilePicture", e.target.profilePicture.value)
+    // form.append("fullName", e.target.fullName.value)
+    // form.append("emailAddress", e.target.emailAddress.value)
+    // form.append("username", e.target.username.value)
+    // form.append("password", e.target.password.value)
+    // form.append("profilePicture", e.target.profilePicture.value)
+    // form.append("profilePicture", e.target.profilePicture.value)
+    // form.append("profilePicture", e.target.profilePicture.value)
+
     let response = await fetch(api + "user/userCreate", {
       method: 'POST',
       body: form
