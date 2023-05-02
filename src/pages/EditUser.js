@@ -31,10 +31,7 @@ const navigate = useNavigate()
     testUserAuth()
   }, [])
 
-  function handleSubmit(event){
-    event.preventDefault();
-    navigate('/user')
-  };
+  
 
 //Sets up the body of the form to receive the user's information
 return (
@@ -45,7 +42,7 @@ return (
     <Container>
 
         <Heading>Edit User</Heading>
-            <form action={api + "user/userUpdate"} method="POST" onSubmit={() => handleSubmit}>
+            <form action={api + "user/userUpdate"} method="POST">
         <Row>
 
           <Column>
