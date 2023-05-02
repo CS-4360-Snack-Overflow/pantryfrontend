@@ -86,7 +86,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, links2, classNam
   }
   function logoutAction() {
     logout().then(
-      window.location.href = "/"
+      () => {window.location.href = "/"}
     )
   }
 
