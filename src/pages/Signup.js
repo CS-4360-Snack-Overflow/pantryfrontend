@@ -87,21 +87,7 @@ export default ({
 
   async function handleSubmit(e) {
     e.preventDefault()
-    const form = new FormData(e.target);
-    console.log("submitting user")
-    console.log(form)
-    let response = await fetch(api + "user/userCreate", {
-      method: 'POST',
-      body: form
-    })
-    response = await response.json()
-    console.log(response)
-    if(response.message === "success") {
-      navigate("/")
-    } else {
-      // Handle signup error message
-      return
-    }
+    navigate("/")
   }
   return (
   <AnimationRevealPage>
@@ -114,7 +100,7 @@ export default ({
           <MainContent>
             <Heading>{headingText}</Heading>
             <FormContainer>
-              <Form onSubmit={handleSubmit}>
+              <Form action={api + "user/userCreate"} method="POST" onSubmit={handleSubmit}>
                 <label class="mx-auto">Profile picture</label>
                 <ProfilePicture src={imUrl} alt="Profile Picture" />
                 <div class="flex-row">
