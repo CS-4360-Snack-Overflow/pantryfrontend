@@ -1,7 +1,7 @@
 const api = process.env.REACT_APP_API_KEY
 
 export async function checkRecipeAuth(recipe_user_id){
-    let data = await fetch(api + "user-id", {mode: 'cors', credentials : "include"}).catch((err) => console.log(err))
+    let data = await fetch(api + "user/user-id", {mode: 'cors', credentials : "include"}).catch((err) => console.log(err))
     data = await data.json()
     let result = {belongsToUser: false, isSignedIn: false}
     if(data.userId === -1) {
