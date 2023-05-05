@@ -90,6 +90,9 @@ export default () => {
   useEffect(() => {
     checkRecipeAuth(recipe.user_num)
     .then((res) =>{
+      console.log(res.isSignedIn)
+      console.log(res.belongsToUser)
+
       setAuthorized(res.belongsToUser)
       setSignedIn(res.isSignedIn)
     })
