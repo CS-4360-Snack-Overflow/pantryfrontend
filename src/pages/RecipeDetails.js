@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import { deleteRecipe } from "helpers/RecipeService";
 import { addFavoriteRecipe, checkRecipeAuth, checkFavorited, removeFavoriteRecipe } from "helpers/UserService";
 import { Link } from "react-router-dom";
+import { isVisible } from "@testing-library/user-event/dist/types/utils";
 
 
 const ScrollToTop = ({ children }) => {
@@ -49,6 +50,7 @@ export default () => {
   const [likes, setLikes] = useState(recipe.user_ratings.count_positive ? recipe.user_ratings.count_positive : 0);
   const [dislikes, setDislikes] = useState(recipe.user_ratings.count_negative ? recipe.user_ratings.count_negative : 0);
   const [isAuthorized, setAuthorized] = useState(false)
+  const [isSignedIn, setSignedIn] = useState(false)
   const [isFavorite, setFavorite] = useState(false)
   
   const Heading = tw.h2`text-4xl sm:text-5xl font-black tracking-wide text-center pt-10 md:pt-24`;
@@ -88,7 +90,8 @@ export default () => {
   useEffect(() => {
     checkRecipeAuth(recipe.user_num)
     .then((res) =>{
-      setAuthorized(res)
+      setAuthorized(res.belongsToUser)
+      setSignedIn(res.isSignedIn)
     })
 
     checkFavorited(recipe._id)
@@ -160,7 +163,7 @@ export default () => {
         )}
         {/* Show favorite/unfavorite button if user didn't create the recipe */}
         {!isAuthorized &&(
-          <AddButton onClick={()=>{handleFavorite()}}>
+          <AddButton onClick={()=>{handleFavorite()}} isVisible={isSignedIn}>
             {!isFavorite ? "Favorite Recipe" : "Unfavorite Recipe"}
           </AddButton>
         )}

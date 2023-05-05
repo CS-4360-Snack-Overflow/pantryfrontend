@@ -3,8 +3,14 @@ const api = process.env.REACT_APP_API_KEY
 export async function checkRecipeAuth(recipe_user_id){
     let data = await fetch(api + "user-id", {mode: 'cors', credentials : "include"}).catch((err) => console.log(err))
     data = await data.json()
-    console.log(data)
-    return data.userId === recipe_user_id
+    let result = {belongsToUser: false, isSignedIn: false}
+    if(data.userId === -1) {
+        return result
+    } else {
+        result.belongsToUser = data.userId === recipe_user_id
+        result.isSignedIn = true
+        return result
+    }
 }
 
 export async function testUserAuth(redirect=true) {
@@ -15,7 +21,6 @@ export async function testUserAuth(redirect=true) {
     }
     return auth
 }
-
 
 export async function checkFavorited(recipe_id){
     let data = await fetch(api + "user/isfavorite/" + recipe_id, {mode: 'cors', credentials : "include"}).catch((err) => console.log(err))
