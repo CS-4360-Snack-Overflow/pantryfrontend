@@ -27,7 +27,7 @@ const ScrollToTop = ({ children }) => {
   }, []);
 
   return children || null;
-};
+}
 
 export default () => {
   // Load the recipe in from recipe grid
