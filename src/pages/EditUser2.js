@@ -41,7 +41,7 @@ const ProfilePicture = styled.img`
   border-radius: 50%;
   object-fit: cover;
   ${tw`mx-auto`}
-`;
+`
 
 export default ({
   logoLinkUrl = "/",
